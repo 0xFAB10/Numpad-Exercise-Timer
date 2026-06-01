@@ -2,7 +2,7 @@
 Um contador de tempo minimalista para exercícios físicos, controlado **exclusivamente pelo teclado numérico** (numpad). Perfeito para séries de treino onde você não quer interromper o ritmo para usar o mouse.
 ![Demo](https://img.shields.io/badge/platform-Windows-blue) ![Python](https://img.shields.io/badge/python-3.6+-green)
 
-## 🎯 Funcionalidades
+## Funcionalidades
 
 - **Controle 100% via numpad** - sem necessidade de mouse
 - **Overlay flutuante** - sempre visível sobre outras janelas
@@ -16,7 +16,7 @@ Um contador de tempo minimalista para exercícios físicos, controlado **exclusi
 - **Input Handler**: Biblioteca `keyboard` (escuta raw keycodes)
 - **Lógica**: Máquina de estados simples (aguardando total → contabilizando)
 
-## ⌨️ Comandos do Teclado
+## Comandos do Teclado
 
 | Tecla | Função |
 |-------|--------|
@@ -24,7 +24,7 @@ Um contador de tempo minimalista para exercícios físicos, controlado **exclusi
 | `Numpad Enter` (78) | Confirmar/processar entrada |
 | `Numpad +` (74) | Limpar campo atual |
 
-## 🚀 Como Usar
+## Como Usar
 
 1. **Iniciar** - Digite o tempo total do treino em minutos (ex: `20` para 20 min)
 2. **Registrar exercício** - Digite quanto tempo levou e pressione `Enter`
