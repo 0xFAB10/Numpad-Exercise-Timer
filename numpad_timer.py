@@ -184,49 +184,57 @@ def mover_janela(event):
 def fechar():
     janela.destroy()
 
-# Janela principal
-janela = tk.Tk()
-janela.title("Contador de tempo")
-janela.attributes("-topmost", True)
-janela.overrideredirect(True)
+def main():
+    '''Funcção principal de inicialização'''    
+    global janela, entrada, rotulo, rotulo_tempo, btn. color_btn_activate, color_btn_inactivate
+    
+    # Janela principal
+    janela = tk.Tk()
+    janela.title("Contador de tempo")
+    janela.attributes("-topmost", True)
+    janela.overrideredirect(True)
+    
+    # Posição no canto superior direito
+    largura_tela = janela.winfo_screenwidth()
+    altura_tela = janela.winfo_screenmmheight()
+    posicao_x = largura_tela - 175
+    posicao_y = altura_tela
+    janela.geometry(f"170x60+{posicao_x}+{int(posicao_y*3.37)}")
+    
+    # Barra personalizada
+    barra = tk.Frame(janela, bg='gray20', height=10)
+    barra.pack(fill=tk.X)
+    barra.bind("<Button-1>", iniciar_mover)
+    barra.bind("<B1-Motion>", mover_janela)
+    
+    # Botão de fechar
+    btn_fechar = tk.Button(barra, font=("Arial", 6), text="[ X ]", command=fechar, bg='gray20', fg='white', bd=0)
+    btn_fechar.pack(side=tk.RIGHT, padx=3)
+    
+    # Texto inicial
+    rotulo = tk.Label(janela, text="Digite tempo total em minutos:", font=("Arial", 9))
+    rotulo.pack(pady=1)
+    
+    # Entrada com validação
+    vcmd = (janela.register(validar_entrada), "%P")
+    entrada = tk.Entry(janela, font=("Arial", 9), validate="key", validatecommand=vcmd, justify='center', width=9)
+    entrada.pack(side='left',pady=1, padx=3)
+    
+    # Tepo do ultimo exercicio
+    rotulo_tempo = tk.Label(janela, text="(00:00)", fg='gray', font=("Arial", 9))
+    rotulo_tempo.pack(side='left', pady=1, padx=3)
+    
+    # Botão:
+    color_btn_activate = "gray80"
+    color_btn_inactivate = "gray20"
+    def toggle():
+        btn.config(bg=color_btn_inactivate if btn.config('bg')[4] == color_btn_activate else color_btn_activate)
+    btn = tk.Button(janela, bg=color_btn_inactivate, command=toggle, width=4, height=1)
+    btn.pack(side='right', padx=3, pady=1)
+    
+    capturar_entrada()
+    janela.mainloop()
 
-# Posição no canto superior direito
-largura_tela = janela.winfo_screenwidth()
-altura_tela = janela.winfo_screenmmheight()
-posicao_x = largura_tela - 175
-posicao_y = altura_tela
-janela.geometry(f"170x60+{posicao_x}+{int(posicao_y*3.37)}")
-
-# Barra personalizada
-barra = tk.Frame(janela, bg='gray20', height=10)
-barra.pack(fill=tk.X)
-barra.bind("<Button-1>", iniciar_mover)
-barra.bind("<B1-Motion>", mover_janela)
-
-# Botão de fechar
-btn_fechar = tk.Button(barra, font=("Arial", 6), text="[ X ]", command=fechar, bg='gray20', fg='white', bd=0)
-btn_fechar.pack(side=tk.RIGHT, padx=3)
-
-# Texto inicial
-rotulo = tk.Label(janela, text="Digite tempo total em minutos:", font=("Arial", 9))
-rotulo.pack(pady=1)
-
-# Entrada com validação
-vcmd = (janela.register(validar_entrada), "%P")
-entrada = tk.Entry(janela, font=("Arial", 9), validate="key", validatecommand=vcmd, justify='center', width=9)
-entrada.pack(side='left',pady=1, padx=3)
-
-# Tepo do ultimo exercicio
-rotulo_tempo = tk.Label(janela, text="(00:00)", fg='gray', font=("Arial", 9))
-rotulo_tempo.pack(side='left', pady=1, padx=3)
-
-# Botão:
-color_btn_activate = "gray80"
-color_btn_inactivate = "gray20"
-def toggle():
-    btn.config(bg=color_btn_inactivate if btn.config('bg')[4] == color_btn_activate else color_btn_activate)
-btn = tk.Button(janela, bg=color_btn_inactivate, command=toggle, width=4, height=1)
-btn.pack(side='right', padx=3, pady=1)
-
-capturar_entrada()
-janela.mainloop()
+# Bloco principal
+if __name__ == "__main__":
+    main()
