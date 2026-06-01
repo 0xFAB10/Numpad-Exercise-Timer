@@ -10,6 +10,12 @@ Um contador de tempo minimalista para exercícios físicos, controlado **exclusi
 - **Contador regressivo** - mostra o tempo restante do treino
 - **Janela arrastável** e com botão de fechar minimalista
 
+## Arquitetura
+
+- **Frontend**: Tkinter (overlay topmost, janela sem bordas)
+- **Input Handler**: Biblioteca `keyboard` (escuta raw keycodes)
+- **Lógica**: Máquina de estados simples (aguardando total → contabilizando)
+
 ## ⌨️ Comandos do Teclado
 
 | Tecla | Função |
@@ -28,12 +34,10 @@ Um contador de tempo minimalista para exercícios físicos, controlado **exclusi
 4. **Subtrair tempo** - Digite com zero à esquerda (ex: `030` = subtrai 30 segundos)
 5. **Cronômetro rápido** - Digite `0` para usar o modo cronômetro (marca o tempo entre teclas)
 
-## 📦 Instalação
+## Instalação e Uso
 
 ```bash
-# Clone o repositório
 git clone https://github.com/seu-usuario/numpad-exercise-timer.git
 cd numpad-exercise-timer
-
-# Instale a dependência
-pip install keyboard
+pip install -r requirements.txt
+python numpad_timer.py
